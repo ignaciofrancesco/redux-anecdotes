@@ -60,8 +60,6 @@ const reducer = (state = initialState, action) => {
     }
 
     case "ADD": {
-      console.log("state before: ", state);
-
       // Retrieve the anecdote from the action
       const newAnecdote = action.payload;
 
