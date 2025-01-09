@@ -22,6 +22,27 @@ const orderAnecdotesByVotes = (anecdotes) => {
   return anecdotes.toSorted((a1, a2) => a2.votes - a1.votes);
 };
 
+export const createVoteAction = (id) => {
+  // Create an action of type "vote", with the id of the anecdote
+  const voteAction = {
+    type: "VOTE",
+    payload: {
+      id,
+    },
+  };
+
+  return voteAction;
+};
+
+export const createAddAnecdoteAction = (content) => {
+  const addAnecdoteAction = {
+    type: "ADD",
+    payload: asObject(content),
+  };
+
+  return addAnecdoteAction;
+};
+
 const initialState = anecdotesAtStart.map(asObject);
 
 const reducer = (state = initialState, action) => {
