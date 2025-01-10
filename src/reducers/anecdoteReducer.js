@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import anecdotesService from "../services/anecdotes";
 
 const anecdoteSlice = createSlice({
   name: "anecdote",
@@ -30,6 +31,16 @@ const anecdoteSlice = createSlice({
     },
   },
 });
+
+// Async action creator, possible via redux thunk
+export const initializeAnecdotes = () => {
+  return async (dispatch) => {
+    // Perform async task
+    const anecdotes = await anecdotesService.getAll();
+    // Dispatch actions
+    dispatch(set(anecdotes));
+  };
+};
 
 export default anecdoteSlice.reducer;
 export const { vote, add, set } = anecdoteSlice.actions;

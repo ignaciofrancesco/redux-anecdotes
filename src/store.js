@@ -1,15 +1,17 @@
 // Defines de GLOBAL STATE STRUCTURE
 
-import { combineReducers, createStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 import anecdoteReducer from "./reducers/anecdoteReducer";
 import filterReducer from "./reducers/filterReducer";
+import notificationReducer from "./reducers/notificationReducer";
 
-// It relates the slice of state "anecdotes", to its reducer "anecdoteReducer" which is the function that computes that state everytime.
-const reducer = combineReducers({
-  anecdotes: anecdoteReducer,
-  filter: filterReducer,
+// This creates and configures the store, determining also the global state structure, and its reducers
+const store = configureStore({
+  reducer: {
+    anecdotes: anecdoteReducer,
+    filter: filterReducer,
+    notification: notificationReducer,
+  },
 });
-
-const store = createStore(reducer);
 
 export default store;
