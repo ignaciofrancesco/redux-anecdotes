@@ -1,15 +1,12 @@
-import { createSetFilterAction } from "../reducers/filterReducer";
 import { useDispatch } from "react-redux";
+import { setFilter } from "../reducers/filterReducer";
 
 const Filter = () => {
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
-    // Dispatch a setfilter action with new filter
-    const filter = event.target.value;
-    const setFilterAction = createSetFilterAction(filter);
-    // This is a way to set the filter state
-    dispatch(setFilterAction);
+    // Uses the setFilter function, which creates the action and perform the reduce at the same time
+    dispatch(setFilter(event.target.value));
   };
 
   const style = {
