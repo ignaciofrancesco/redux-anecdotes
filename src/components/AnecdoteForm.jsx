@@ -4,22 +4,27 @@ import {
   setNotification,
   unsetNotification,
 } from "../reducers/notificationReducer";
+import anecdotesService from "../services/anecdotes";
 
 const AnecdoteForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmitAnecdote = (event) => {
+  const handleSubmitAnecdote = async (event) => {
     event.preventDefault();
 
-    const anecdote = event.target.anecdote.value;
-
+    const content = event.target.anecdote.value;
     event.target.anecdote.value = "";
 
-    dispatch(add(anecdote));
+    // Create new anecdote in db
+    const anecdoteCreated = await anecdotesService.createNew(content);
 
-    const notification = `You've just created '${anecdote}'`;
+    // Update anecdotes state
+    dispatch(add(anecdoteCreated));
 
-    // Set notification message
+    /* Set notification message */
+
+    const notification = `You've just created '${content}'`;
+
     dispatch(setNotification(notification));
 
     // Register a callback to remove the notification
