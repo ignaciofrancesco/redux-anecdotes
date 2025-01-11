@@ -18,12 +18,13 @@ const AnecdoteList = () => {
 
   const dispatch = useDispatch();
 
-  // HANDLERS
-  const handleClickVote = (anecdoteId) => {
-    // Sets the new state of the anecdotes using Redux
-    dispatch(vote(anecdoteId));
+  /* HANDLERS */
 
+  const handleClickVote = (anecdoteId) => {
+    // Find the anecdote
     const anecdote = anecdotes.find((a) => a.id === anecdoteId);
+    // Update the redux store state, and the db
+    dispatch(vote(anecdote));
 
     const notification = `You voted '${anecdote.content}'`;
 

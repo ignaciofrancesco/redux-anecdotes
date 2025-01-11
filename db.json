@@ -3,7 +3,7 @@
     {
       "content": "NACHO If it hurts, do it more often",
       "id": "47145",
-      "votes": 0
+      "votes": 4
     },
     {
       "content": "Adding manpower to a late software project makes it later!",
@@ -53,6 +53,16 @@
     {
       "id": "ea32",
       "content": "test thunk 1",
+      "votes": 0
+    },
+    {
+      "id": "bbea",
+      "content": "TEST 1",
+      "votes": 0
+    },
+    {
+      "id": "a9bc",
+      "content": "TEST 2",
       "votes": 0
     }
   ]
