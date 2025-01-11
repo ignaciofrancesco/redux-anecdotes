@@ -4,16 +4,30 @@ const notificationSlice = createSlice({
   name: "notification",
   initialState: "Initial notification",
   reducers: {
-    setNotification(state, action) {
+    set(state, action) {
       // Create the new state
       const newNotification = action.payload;
       return newNotification;
     },
-    unsetNotification(state, action) {
+    unset(state, action) {
       return "";
     },
   },
 });
 
+/* REDUX THUNK FUNCTIONS */
+
+export const setNotification = (message, timeout) => {
+  return async (dispatch) => {
+    dispatch(set(message));
+
+    const timeoutInMs = timeout * 1000;
+
+    setTimeout(() => {
+      dispatch(unset());
+    }, timeoutInMs);
+  };
+};
+
 export default notificationSlice.reducer;
-export const { setNotification, unsetNotification } = notificationSlice.actions;
+export const { set, unset } = notificationSlice.actions;
